@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClassLoaderPractice.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">thejava</a> &gt; <a href="index.source.html" class="el_package">classloader</a> &gt; <span class="el_source">ClassLoaderPractice.java</span></div><h1>ClassLoaderPractice.java</h1><pre class="source lang-java linenums">package classloader;
+
+<span class="nc" id="L3">public class ClassLoaderPractice {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L6">        ClassLoader classLoader = ClassLoaderPractice.class.getClassLoader();</span>
+
+<span class="nc" id="L8">        System.out.println(classLoader);</span>
+<span class="nc" id="L9">        System.out.println(classLoader.getParent());</span>
+<span class="nc" id="L10">        System.out.println(classLoader.getParent().getParent());  // 부모가 있긴 있는데, Native 코드로 구현돼있어서 안보임.</span>
+
+        // 클래스 읽어줘 -&gt; 최고조상에게 부탁 -&gt; 그다음 -&gt; 그다음 ... -&gt; 본인 -&gt; 못읽으면 -&gt; ClassNotFoundException 발생
+        // 보통 의존성 추가 안했을 때 발생함
+
+        // 링크
+
+        // Prepare : 메모리 준비 과정
+
+        // Resolve : 심볼릭 레퍼런스 -&gt; 실제 레퍼런스로 교체 (Optional) - 사용할 때 발생할 수도 있음.
+
+        // 아래의 참조는 링크 과정에서는 &quot;심볼릭 레퍼런스&quot;형태로 관리된다.
+        // 즉, 실제 레퍼런스를 갖고있지 않다. (논리적 레퍼런스)
+        // Resolve 하여 심볼릭 레퍼런스를 실제 레퍼런스로 교체하는데, 클래스 로더 상에서 수행될 수도 있고, 아닐 수도 있다.
+<span class="nc" id="L24">        SymbolicReference symbolicReference = new SymbolicReference();</span>
+
+<span class="nc" id="L26">    }</span>
+
+    // static 필드는 클래스 로더에서 전부 초기화 된다. (할당)
+<span class="nc" id="L29">    static String name = &quot;kim&quot;;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
