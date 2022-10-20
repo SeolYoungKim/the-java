@@ -17,6 +17,8 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.1'
     testImplementation 'org.mockito:mockito-core:4.8.0'
+
+    implementation 'net.bytebuddy:byte-buddy:1.12.18'
 }
 
 test {
